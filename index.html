@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="author" content="Maria Jose Molina" />
+    <link rel="stylesheet" href="pages/index.css" />
+    <title>Around the US</title>
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__logo"
+          src="./images/logoAround.png"
+          alt="Logo Around the U.S."
+        />
+      </header>
+      <main>
+        <section class="profile">
+          <img
+            class="profile__picture"
+            src="./images/Avatar.png"
+            alt="Foto de perfil"
+          />
+          <div class="profile__info">
+            <p class="profile__name">
+              Jacques Cousteau
+              <button class="profile__edit-button">
+                <img
+                  src="./images/vectorEditButton.png"
+                  alt="boton para editar perfil"
+                />
+              </button>
+            </p>
+            <p class="profile__ocupation">Explorer</p>
+          </div>
+
+          <button class="profile__button-add-card">
+            <img
+              class="add-card__image"
+              src="./images/addButton.png"
+              alt="boton de agregar tarjeta"
+            />
+          </button>
+        </section>
+        <section class="cards">
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/yosemiteValley.jpg"
+              alt="Fotografía de Yosemite Valley"
+            />
+            <div class="card__text">
+              <h2 class="card__title">Yosemite Valley</h2>
+              <button class="card__button">
+                <img
+                  src="./images/vectorCardButton.png"
+                  alt="botón de me gusta"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/lakeLouise.jpg"
+              alt="fotografia de Lake Louise"
+            />
+            <div class="card__text">
+              <h2 class="card__title">Lake Louise</h2>
+              <button class="card__button">
+                <img
+                  src="./images/vectorCardButton.png"
+                  alt="botón de me gusta"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/baldMountains.jpg"
+              alt="Fotografía de Bald Mountains"
+            />
+            <div class="card__text">
+              <h2 class="card__title">Bald Mountains</h2>
+              <button class="card__button">
+                <img
+                  src="./images/vectorCardButton.png"
+                  alt="botón de me gusta"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/latemar.jpg"
+              alt="Fotografía de Latemar"
+            />
+            <div class="card__text">
+              <h2 class="card__title">Latemar</h2>
+              <button class="card__button">
+                <img
+                  src="./images/vectorCardButton.png"
+                  alt="botón de me gusta"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/vanoiseNational.jpg"
+              alt="Fotografía de Vanoise National "
+            />
+            <div class="card__text">
+              <h2 class="card__title">Vanoise National</h2>
+              <button class="card__button">
+                <img
+                  src="./images/vectorCardButton.png"
+                  alt="botón de me gusta"
+                />
+              </button>
+            </div>
+          </div>
+          <div class="card">
+            <img
+              class="card__image"
+              src="./images/lagoDiBraies.jpg"
+              alt="Fotografía de Lago di Braies"
+            />
+            <div class="card__text">
+              <h2 class="card__title">Lago di Braies</h2>
+              <button class="card__button">
+                <img
+                  src="./images/vectorCardButton.png"
+                  alt="botón de me gusta"
+                />
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer>
+        <p class="footer__text">© 2020 Around The U.S.</p>
+      </footer>
+    </div>
+    <section class="popup">
+      <form class="popup__form">
+        <h2 class="form__title">Edit profile</h2>
+        <input class="popup__form-name" type="text" name="name" />
+        <input class="popup__form-ocupation" type="text" name="ocupation" />
+        <button class="popup__button" type="submit">Save</button>
+      </form>
+    </section>
+    <script src="./index.js"></script>
+  </body>
+</html>
