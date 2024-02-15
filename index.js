@@ -20,7 +20,7 @@ function setPopupInputs() {
 }
 
 function openPopup() {
-  editPopupElement.classList.toggle("popup_opened");
+  editPopupElement.classList.add("popup__opened");
 }
 
 editProfileButton.addEventListener("click", openPopup);
