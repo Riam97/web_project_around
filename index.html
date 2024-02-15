@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
+    <meta name="description" content="Around the US" />
+    <meta name="keywords" content="US, Nature, Parks" />
     <meta name="author" content="Maria Jose Molina" />
     <link rel="stylesheet" href="pages/index.css" />
     <title>Around the US</title>
@@ -20,41 +20,52 @@
       </header>
       <main>
         <section class="profile">
-          <img
-            class="profile__picture"
-            src="./images/Avatar.png"
-            alt="Foto de perfil"
-          />
-          <div class="profile__info">
-            <p class="profile__name">
-              Jacques Cousteau
-              <button class="profile__edit-button">
-                <img
-                  src="./images/vectorEditButton.png"
-                  alt="boton para editar perfil"
-                />
-              </button>
-            </p>
-            <p class="profile__ocupation">Explorer</p>
+          <div class="profile__picture-info">
+            <img
+              class="profile__picture"
+              src="./images/Avatar.png"
+              alt="Foto de perfil"
+            />
+            <div class="profile__info">
+              <div class="profile__info-button">
+                <p class="profile__name">Jacques Cousteau</p>
+                <button class="profile__edit-button">
+                  <img
+                    src="./images/vectorEditButton.png"
+                    alt="botón para editar perfil"
+                  />
+                </button>
+              </div>
+              <p class="profile__ocupation">Explorer</p>
+            </div>
           </div>
-
           <button class="profile__button-add-card">
             <img
               class="add-card__image"
               src="./images/addButton.png"
-              alt="boton de agregar tarjeta"
+              alt="botón para agregar tarjeta"
             />
           </button>
           <div class="popup">
             <form class="popup__form">
+              <button class="popup__close-button">
+                <img
+                  src="./images/closeIcon.png"
+                  alt="botón para cerrar ventana"
+                />
+              </button>
               <h2 class="form__title">Edit profile</h2>
-              <input class="popup__input" type="text" placeholder="name" />
               <input
-                class="popup__input"
+                class="popup__input popup__name"
                 type="text"
-                placeholder="profession"
+                placeholder="Name"
               />
-              <button class="popup__button" type="button">Save</button>
+              <input
+                class="popup__input popup__ocupation"
+                type="text"
+                placeholder="Profession"
+              />
+              <button class="popup__button" type="submit">Save</button>
             </form>
           </div>
         </section>
@@ -130,7 +141,7 @@
               alt="Fotografía de Vanoise National "
             />
             <div class="card__text">
-              <h2 class="card__title">Vanoise National</h2>
+              <h2 class="card__title">Vanoise National Park</h2>
               <button class="card__button">
                 <img
                   src="./images/vectorCardButton.png"

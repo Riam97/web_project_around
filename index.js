@@ -4,23 +4,32 @@ const profileOcupationElement = profileElement.querySelector(
   ".profile__ocupation"
 );
 
-const profileName = profileNameElement.textContent;
-const profileOcupation = profileOcupationElement.textContent;
-
 const editProfileButton = document.querySelector(".profile__edit-button");
 const editPopupElement = document.querySelector(".popup");
 
 const formElement = document.querySelector(".popup__form");
 const nameForm = formElement.querySelector(".popup__form-name");
-const ocupationForm = formElement.querySelector("popup__form-ocupation");
+const ocupationForm = formElement.querySelector(".popup__form-ocupation");
 
-function setPopupInputs() {
-  nameForm.value = profileName;
-  ocupationForm.value = profileOcupation;
+const button = formElement.querySelector(".popup__button");
+const popupName = formElement.querySelector(".popup__name");
+const popupOcupation = formElement.querySelector(".popup__ocupation");
+
+function handleFormSubmit(evt) {
+  evt.preventDefault();
+  profileNameElement.textContent = popupName.value;
+  profileOcupationElement.textContent = popupOcupation.value;
+  /*editPopupElement.classList.remove("popup__opened");*/
+  closePopup();
 }
 
 function openPopup() {
   editPopupElement.classList.add("popup__opened");
 }
 
+function closePopup() {
+  editPopupElement.classList.remove("popup__opened");
+}
+
+button.addEventListener("click", handleFormSubmit);
 editProfileButton.addEventListener("click", openPopup);

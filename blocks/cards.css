@@ -1,0 +1,50 @@
+.cards {
+  max-width: 880px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.card {
+  max-width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+.card__text {
+  width: 246px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 15px;
+}
+
+.card__image {
+  max-width: 282px;
+  max-height: 282px;
+  border-radius: 10px;
+}
+
+.card__title {
+  font-family: "Inter", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 29.05px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.card__button {
+  border: none;
+  width: 21px;
+  height: 19px;
+  margin: 25px 15px 0 0;
+  background-color: #fff;
+  transition: 0.3s;
+}
+
+.card__button:hover {
+  opacity: 0.5;
+}
