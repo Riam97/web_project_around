@@ -25,11 +25,13 @@ function handleFormSubmit(evt) {
 
 function openPopup() {
   editPopupElement.classList.add("popup__opened");
+  popupName.value = profileNameElement.textContent;
+  popupOcupation.value = profileOcupationElement.textContent;
 }
 
 function closePopup() {
   editPopupElement.classList.remove("popup__opened");
 }
 
-button.addEventListener("click", handleFormSubmit);
+formElement.addEventListener("submit", handleFormSubmit);
 editProfileButton.addEventListener("click", openPopup);
