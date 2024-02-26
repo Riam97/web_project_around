@@ -95,103 +95,23 @@
           </div>
         </section>
         <section class="cards">
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/yosemiteValley.jpg"
-              alt="Fotografía de Yosemite Valley"
-            />
-            <div class="card__text">
-              <h2 class="card__title">Yosemite Valley</h2>
-              <button class="card__button">
-                <img
-                  src="./images/vectorCardButton.png"
-                  alt="botón de me gusta"
-                />
-              </button>
+          <template class="cards__template">
+            <div class="card">
+              <img class="card__image" />
+              <button class="card__delete-button"></button>
+              <div class="card__text">
+                <h2 class="card__title"></h2>
+                <button class="card__like-button"></button>
+              </div>
             </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/lakeLouise.jpg"
-              alt="fotografia de Lake Louise"
-            />
-            <div class="card__text">
-              <h2 class="card__title">Lake Louise</h2>
-              <button class="card__button">
-                <img
-                  src="./images/vectorCardButton.png"
-                  alt="botón de me gusta"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/baldMountains.jpg"
-              alt="Fotografía de Bald Mountains"
-            />
-            <div class="card__text">
-              <h2 class="card__title">Bald Mountains</h2>
-              <button class="card__button">
-                <img
-                  src="./images/vectorCardButton.png"
-                  alt="botón de me gusta"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/latemar.jpg"
-              alt="Fotografía de Latemar"
-            />
-            <div class="card__text">
-              <h2 class="card__title">Latemar</h2>
-              <button class="card__button">
-                <img
-                  src="./images/vectorCardButton.png"
-                  alt="botón de me gusta"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/vanoiseNational.jpg"
-              alt="Fotografía de Vanoise National "
-            />
-            <div class="card__text">
-              <h2 class="card__title">Vanoise National Park</h2>
-              <button class="card__button">
-                <img
-                  src="./images/vectorCardButton.png"
-                  alt="botón de me gusta"
-                />
-              </button>
-            </div>
-          </div>
-          <div class="card">
-            <img
-              class="card__image"
-              src="./images/lagoDiBraies.jpg"
-              alt="Fotografía de Lago di Braies"
-            />
-            <div class="card__text">
-              <h2 class="card__title">Lago di Braies</h2>
-              <button class="card__button">
-                <img
-                  src="./images/vectorCardButton.png"
-                  alt="botón de me gusta"
-                />
-              </button>
-            </div>
-          </div>
+          </template>
+          <div class="card__container cards"></div>
         </section>
+        <div class="popup__images">
+          <button class="popup__close-button"></button>
+          <img class="popup__card-image" />
+          <p class=".popup__card-title"></p>
+        </div>
       </main>
       <footer class="footer">
         <p class="footer__text">© 2020 Around The U.S.</p>

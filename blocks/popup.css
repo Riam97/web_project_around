@@ -62,3 +62,10 @@
 .popup__button:hover {
   opacity: 0.5;
 }
+
+/* estilo del popup de la imagenes*/
+.popup__images {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+}
