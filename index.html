@@ -45,7 +45,7 @@
               alt="botón para agregar tarjeta"
             />
           </button>
-          <div class="popup popup__profile">
+          <div class="popup" id="popup__profile">
             <form class="popup__form">
               <button class="popup__close-button">
                 <img
@@ -69,7 +69,7 @@
               <button class="popup__button" type="submit">Save</button>
             </form>
           </div>
-          <div class="popup popup__add-card">
+          <div class="popup" id="popup__add-card">
             <form class="popup__form">
               <button class="popup__close-button">
                 <img
@@ -94,20 +94,19 @@
             </form>
           </div>
         </section>
-        <section class="cards">
-          <template class="cards__template">
-            <div class="card">
-              <img class="card__image" />
-              <button class="card__delete-button"></button>
-              <div class="card__text">
-                <h2 class="card__title"></h2>
-                <button class="card__like-button"></button>
-              </div>
+        <section class="cards"></section>
+        <template class="cards__template">
+          <div class="card">
+            <img class="card__image" />
+            <button class="card__delete-button"></button>
+            <div class="card__text">
+              <h2 class="card__title"></h2>
+              <button class="card__like-button"></button>
             </div>
-          </template>
-          <div class="card__container cards"></div>
-        </section>
-        <div class="popup popup__images">
+          </div>
+        </template>
+
+        <div class="popup" id="popup__images">
           <div class="popup__container">
             <button class="popup__close-button">
               <img
