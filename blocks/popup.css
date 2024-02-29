@@ -3,7 +3,7 @@
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
@@ -19,7 +19,7 @@
   position: absolute;
   top: -35px;
   right: -45px;
-  background-color: #000;
+  background-color: transparent;
   border: none;
 }
 
@@ -63,9 +63,14 @@
   opacity: 0.5;
 }
 
-/* estilo del popup de la imagenes*/
-.popup__images {
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  display: flex;
+.popup__card-image {
+  height: 530px;
+}
+
+.popup__container {
+  position: relative;
+}
+
+.popup__card-title {
+  color: #fff;
 }

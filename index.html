@@ -79,13 +79,13 @@
               </button>
               <h2 class="popup__form-title">Nuevo lugar</h2>
               <input
-                class="popup__input popup__card-title"
+                class="popup__input popup__input-title"
                 type="text"
                 placeholder="Título"
                 required
               />
               <input
-                class="popup__input popup__card-image"
+                class="popup__input popup__input-image"
                 type="text"
                 placeholder="Enlace a la imagen"
                 required
@@ -107,10 +107,21 @@
           </template>
           <div class="card__container cards"></div>
         </section>
-        <div class="popup__images">
-          <button class="popup__close-button"></button>
-          <img class="popup__card-image" />
-          <p class=".popup__card-title"></p>
+        <div class="popup popup__images">
+          <div class="popup__container">
+            <button class="popup__close-button">
+              <img
+                src="./images/closeIcon.png"
+                alt="botón para cerrar ventana"
+              />
+            </button>
+            <img
+              src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+              class="popup__card-image"
+              alt="imagen de la tarjeta"
+            />
+            <p class="popup__card-title">escribo algo</p>
+          </div>
         </div>
       </main>
       <footer class="footer">

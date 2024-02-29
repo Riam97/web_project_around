@@ -9,15 +9,14 @@ const formElement = document.querySelector(".popup__form");
 const popupName = formElement.querySelector(".popup__name");
 const popupOcupation = formElement.querySelector(".popup__ocupation");
 
-const addCardElement = document.querySelector(".cards");
-//const cardElement = addCardElement.querySelector(".card");
-const cardTitleElement = addCardElement.querySelector(".card__title");
-const cardImageElement = addCardElement.querySelector(".card__image");
 const addCardButton = document.querySelector(".profile__button-add-card");
 const addCardPopupElement = document.querySelector(".popup__add-card");
-const cardTitle = addCardPopupElement.querySelector(".popup__card-title");
-const cardImage = addCardPopupElement.querySelector(".popup__card-image");
-
+const inputTitle = addCardPopupElement.querySelector(".popup__input-title");
+const inputImage = addCardPopupElement.querySelector(".popup__input-image");
+const imagePopupElement = document.querySelector(".popup__images");
+const closeButton = document.querySelectorAll(".popup__close-button");
+const cardTitlePopup = document.querySelector(".popup__card-title");
+const cardImagePopup = document.querySelector(".popup__card-image");
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -62,8 +61,8 @@ function openProfilePopup() {
 //funcion QUE mantiene las tarjetas FUNCIONA
 function openAddCardPopup() {
   addCardPopupElement.classList.add("popup__opened");
-  cardTitle.value = cardImage.value;
-  cardImage.value = cardImageElement.textContent;
+  inputTitle.value = inputImage.value;
+  inputImage.value = cardImageElement.textContent;
 }
 
 function closePopup() {
@@ -73,9 +72,8 @@ function closePopup() {
   if (addCardPopupElement.classList.contains("popup__opened")) {
     addCardPopupElement.classList.remove("popup__opened");
   }
-  //funcion cerrar popup de la imagen NO FUNCIONA
-  if (cardImagePopupElement.classList.contains("popup__opened")) {
-    cardImagePopupElement.classList.remove("popup__opened");
+  if (imagePopupElement.classList.contains("popup__opened")) {
+    imagePopupElement.classList.remove("popup__opened");
   }
 }
 
@@ -83,21 +81,16 @@ formElement.addEventListener("submit", handleFormSubmit);
 editProfileButton.addEventListener("click", openProfilePopup);
 addCardButton.addEventListener("click", openAddCardPopup);
 
-//buscar info en el sprint de como es mejor escribirlo para que se entienda
-const cardLikeButtons = document.querySelectorAll(".card__like-button");
-cardLikeButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    this.classList.toggle("active");
-  });
-});
-
 function card(cardData) {
   const cardTemplate = document.querySelector(".cards__template");
-  const cardElement = cardTemplate.content.cloneNode(true);
+  const cardElement = cardTemplate.content
+    .querySelector(".card")
+    .cloneNode(true);
 
   const cardImageElement = cardElement.querySelector(".card__image");
   const cardTitleElement = cardElement.querySelector(".card__title");
   const cardLikeButton = cardElement.querySelector(".card__like-button");
+  const deleteButtons = cardElement.querySelector(".card__delete-button");
 
   cardImageElement.src = cardData.link;
   cardImageElement.alt = cardData.name;
@@ -107,39 +100,47 @@ function card(cardData) {
     this.classList.toggle("active");
   });
 
-  // cardImageElement.addEventListener("click", function () {
-  //  cardImagePopup.src = cardData.link;
-  //  cardImagePopup.alt = cardData.name;
-  //  cardImagePopupElement.classList.add("popup__opened");
-  // });
+  deleteButtons.addEventListener("click", function () {
+    cardElement.remove();
+  });
 
-  document.querySelector(".card__container").appendChild(cardElement);
+  cardImageElement.addEventListener("click", function () {
+    openImagePopup(cardData.link, cardData.name);
+  });
 
   return cardElement;
 }
 
 initialCards.forEach((cardData) => {
-  card(cardData);
+  const initialCard = card(cardData);
+  document.querySelector(".card__container").appendChild(initialCard);
 });
 
-//el boton de eliminar tarjeta FUNCIONA NO TOCAR no mover
-const deleteButtons = document.querySelectorAll(".card__delete-button");
-deleteButtons.forEach(function (button) {
-  button.addEventListener("click", function () {
-    this.parentElement.remove();
-  });
+closeButton.forEach((button) => {
+  button.addEventListener("click", closePopup);
 });
 
-//funcion para guardar datos y crear la tarjeta NO FUNCIONA
-function handleAddCardSubmit(evt) {
-  evt.preventDefault();
-  const newCardData = {
-    name: cardTitle.value,
-    link: cardImage.value,
+addCardPopupElement.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  let cardValues = {
+    link: inputImage.value,
+    name: inputTitle.value,
   };
 
-  card(newCardData);
-  cardTitle.value = "";
-  cardImage.value = "";
+  const newCard = card(cardValues);
+  document.querySelector(".card__container").prepend(newCard);
+
+  inputTitle.value = "";
+  inputImage.value = "";
+
   closePopup();
+});
+//document.querySelector(".card__container").prepend(newCard);
+
+function openImagePopup(src, title) {
+  imagePopupElement.classList.add("popup__opened");
+  cardImagePopup.src = src;
+  cardTitlePopup.alt = title;
+  cardTitlePopup.textContent = title;
 }
