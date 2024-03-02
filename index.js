@@ -44,7 +44,6 @@ const initialCards = [
   },
 ];
 
-//funcion para cambiar el nombre y la ocupacion del usuario, FUNCIONA NO TOCAR
 function handleFormSubmit(evt) {
   evt.preventDefault();
   profileNameElement.textContent = popupName.value;
@@ -58,11 +57,8 @@ function openProfilePopup() {
   popupOcupation.value = profileOcupationElement.textContent;
 }
 
-//funcion QUE mantiene las tarjetas FUNCIONA
 function openAddCardPopup() {
   addCardPopupElement.classList.add("popup__opened");
-  inputTitle.value = inputImage.value;
-  inputImage.value = cardImageElement.textContent;
 }
 
 function closePopup() {

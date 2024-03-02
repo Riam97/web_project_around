@@ -4,7 +4,7 @@
   grid-template-columns: repeat(3, 1fr);
   /*grid-template-rows: repeat(2, 1fr);*/
   gap: 2rem;
-  margin: 0 auto;
+  margin: 30px auto 0;
 }
 
 .card {
@@ -20,7 +20,8 @@
 .card__image {
   width: 282px;
   height: 282px;
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
 
 .card__text {
@@ -52,6 +53,7 @@
   margin: 25px 0 0;
   background-color: #fff;
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .card__like-button:hover {
@@ -80,4 +82,27 @@
   position: absolute;
   top: 10px;
   right: 10px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.card__delete-button:hover {
+  opacity: 0.5;
+}
+
+@media screen and (max-width: 1279px) {
+  .cards {
+    max-width: 700px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    justify-content: center;
+  }
 }
