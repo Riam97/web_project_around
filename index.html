@@ -46,7 +46,7 @@
             />
           </button>
           <div class="popup" id="popup__profile">
-            <form class="popup__form">
+            <form class="popup__form" name="form" novalidate>
               <button class="popup__close-button">
                 <img
                   src="./images/closeIcon.png"
@@ -55,22 +55,35 @@
               </button>
               <h2 class="popup__form-title">Edit profile</h2>
               <input
+                id="form-input-name"
                 class="popup__input popup__name"
                 type="text"
                 placeholder="Name"
+                minlength="2"
+                maxlength="40"
                 required
               />
+              <span
+                class="popup__input_error"
+                id="form-input-name-error"
+              ></span>
               <input
+                id="form-input-about"
                 class="popup__input popup__ocupation"
                 type="text"
                 placeholder="Profession"
+                minlength="2"
+                maxlength="200"
                 required
               />
+              <span class="popup__input_error" id="form-input-about-error"
+                >Please, fill out this field.</span
+              >
               <button class="popup__button" type="submit">Save</button>
             </form>
           </div>
           <div class="popup" id="popup__add-card">
-            <form class="popup__form">
+            <form class="popup__form" name="form" novalidate>
               <button class="popup__close-button">
                 <img
                   src="./images/closeIcon.png"
@@ -79,17 +92,27 @@
               </button>
               <h2 class="popup__form-title">Nuevo lugar</h2>
               <input
+                id="form-input-title"
                 class="popup__input popup__input-title"
                 type="text"
                 placeholder="Título"
+                minlength="2"
+                maxlength="30"
                 required
               />
+              <span class="popup__input_error" id="form-input-title-error"
+                >Please, fill out this field.</span
+              >
               <input
+                id="form-input-url"
                 class="popup__input popup__input-image"
-                type="text"
+                type="url"
                 placeholder="Enlace a la imagen"
                 required
               />
+              <span class="popup__input_error" id="form-input-url-error"
+                >Please, fill out this field.</span
+              >
               <button class="popup__button" type="submit">Crear</button>
             </form>
           </div>
@@ -130,5 +153,6 @@
     </div>
 
     <script src="./index.js"></script>
+    <script src="./validate.js"></script>
   </body>
 </html>
