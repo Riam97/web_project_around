@@ -74,8 +74,16 @@ function closePopup() {
 }
 
 formElement.addEventListener("submit", handleFormSubmit);
-editProfileButton.addEventListener("click", openProfilePopup);
-addCardButton.addEventListener("click", openAddCardPopup);
+
+editProfileButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+  openProfilePopup();
+});
+
+addCardButton.addEventListener("click", function (event) {
+  event.stopPropagation();
+  openAddCardPopup();
+});
 
 function card(cardData) {
   const cardTemplate = document.querySelector(".cards__template");
@@ -211,4 +219,22 @@ const enableValidation = () => {
 
 enableValidation();
 
-//formInput.addEventListener("Input se ejecuta", isValid);//
+function closePopupEsc(evt) {
+  if (evt.key === "Escape") {
+    closePopup();
+  }
+}
+
+document.addEventListener("keydown", closePopupEsc);
+
+document.onclick = function (event) {
+  if (event.target == editPopupElement) {
+    editPopupElement.classList.remove("popup__opened");
+  }
+  if (event.target == addCardPopupElement) {
+    addCardPopupElement.classList.remove("popup__opened");
+  }
+  if (event.target == imagePopupElement) {
+    imagePopupElement.classList.remove("popup__opened");
+  }
+};
