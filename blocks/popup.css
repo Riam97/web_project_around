@@ -40,7 +40,7 @@
 
 .popup__form-title {
   color: #000;
-  margin: 30px 30px 0;
+  margin: 35px;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
@@ -48,11 +48,27 @@
 
 .popup__input {
   width: 358px;
-  height: 27px;
-  padding: 0;
-  margin: 40px auto 0;
+  height: 28px;
+  margin: 0 auto 5px;
   border: none;
   border-bottom: 1px #545454 solid;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.popup__input:invalid {
+  border-bottom: 1px red solid;
+}
+
+.popup__input_error {
+  height: 28px;
+  margin: 0 36px 5px;
+}
+
+.popup__input-error_active {
+  color: red;
+  font-size: 12px;
+  line-height: 14.52px;
 }
 
 .popup__button {
@@ -60,9 +76,15 @@
   height: 50px;
   background-color: #000;
   color: #fff;
-  margin: 40px auto 0;
+  margin: 0 auto;
   transition: 0.3s;
   cursor: pointer;
+}
+
+.popup__button_inactive {
+  color: #000;
+  background-color: #fff;
+  border: 1px #000 solid;
 }
 
 .popup__button:hover {

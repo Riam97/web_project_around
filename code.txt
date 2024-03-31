@@ -1,0 +1,5 @@
+const formElement = document.querySelector(".popup__form");
+const popupName = formElement.querySelector(".popup__name");
+const popupOcupation = formElement.querySelector(".popup__ocupation");
+const forms = document.querySelectorAll('form[name="form"]');
+const formInput = formElement.querySelectorAll(".popup__input");
