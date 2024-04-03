@@ -11,12 +11,14 @@ const popupOcupation = formElement.querySelector(".popup__ocupation");
 
 const addCardButton = document.querySelector(".profile__button-add-card");
 const addCardPopupElement = document.querySelector("#popup__add-card");
-const inputTitle = addCardPopupElement.querySelector(".popup__input-title");
-const inputImage = addCardPopupElement.querySelector(".popup__input-image");
+const inputTitle = formElement.querySelector(".popup__input-title");
+const inputImage = formElement.querySelector(".popup__input-image");
 const imagePopupElement = document.querySelector("#popup__images");
 const closeButton = document.querySelectorAll(".popup__close-button");
 const cardTitlePopup = document.querySelector(".popup__card-title");
 const cardImagePopup = document.querySelector(".popup__card-image");
+
+const buttonElement = document.querySelector(".popup__button");
 const initialCards = [
   {
     name: "Valle de Yosemite",
@@ -55,11 +57,14 @@ function openProfilePopup() {
   editPopupElement.classList.add("popup__opened");
   popupName.value = profileNameElement.textContent;
   popupOcupation.value = profileOcupationElement.textContent;
+  // setTimeout(() => popupName.focus(), 0);
 }
 
 function openAddCardPopup() {
   addCardPopupElement.classList.add("popup__opened");
 }
+
+console.log(inputTitle);
 
 function closePopup() {
   if (editPopupElement.classList.contains("popup__opened")) {
@@ -124,21 +129,28 @@ closeButton.forEach((button) => {
   button.addEventListener("click", closePopup);
 });
 
-addCardPopupElement.addEventListener("submit", function (event) {
-  event.preventDefault();
+document.addEventListener("DOMContentLoaded", function () {
+  addCardPopupElement.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-  let cardValues = {
-    link: inputImage.value,
-    name: inputTitle.value,
-  };
+    const currentForm = event.target.closest(".popup__form");
 
-  const newCard = card(cardValues);
-  document.querySelector(".cards").prepend(newCard);
+    const inputTitle = currentForm.querySelector(".popup__input-title");
+    const inputImage = currentForm.querySelector(".popup__input-image");
 
-  inputTitle.value = "";
-  inputImage.value = "";
+    let cardValues = {
+      link: inputImage.value,
+      name: inputTitle.value,
+    };
 
-  closePopup();
+    const newCard = card(cardValues);
+    document.querySelector(".cards").prepend(newCard);
+
+    inputTitle.value = "";
+    inputImage.value = "";
+
+    closePopup();
+  });
 });
 
 function openImagePopup(src, title) {
@@ -147,94 +159,3 @@ function openImagePopup(src, title) {
   cardTitlePopup.alt = title;
   cardTitlePopup.textContent = title;
 }
-
-//desde aqui se han hecho cambios
-const forms = document.querySelectorAll('form[name="form"]');
-
-const showInputError = (formElement, formInput, errorMessage) => {
-  const formError = formElement.querySelector(`#${formInput.id}-error`);
-
-  formInput.classList.add("popup__input_error");
-  formError.textContent = errorMessage;
-  formError.classList.add("popup__input-error_active");
-};
-
-const hideInputError = (formElement, formInput) => {
-  const formError = formElement.querySelector(`#${formInput.id}-error`);
-
-  formInput.classList.remove("popup__input_error");
-  formError.classList.remove("popup__input-error_active");
-  formError.textContent = "";
-};
-
-const isValid = (formElement, formInput) => {
-  if (!formInput.validity.valid) {
-    showInputError(formElement, formInput, formInput.validationMessage);
-  } else {
-    hideInputError(formElement, formInput);
-  }
-};
-
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.classList.add("popup__button_inactive");
-    buttonElement.disabled = true;
-  } else {
-    buttonElement.classList.remove("popup__button_inactive");
-    buttonElement.disabled = false;
-  }
-};
-
-const setEventListeners = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
-
-  const buttonElement = formElement.querySelector(".popup__button");
-
-  inputList.forEach((formInput) => {
-    formInput.addEventListener("input", () => {
-      isValid(formElement, formInput);
-
-      toggleButtonState(inputList, buttonElement);
-    });
-  });
-};
-
-const hasInvalidInput = (inputList) => {
-  return Array.from(inputList).some((formInput) => {
-    return !formInput.validity.valid;
-  });
-};
-
-const enableValidation = () => {
-  forms.forEach((formElement) => {
-    formElement.addEventListener("submit", (evt) => {
-      const formInputs = formElement.querySelectorAll(".popup__input");
-      if (hasInvalidInput(formInputs)) {
-        evt.preventDefault();
-      }
-    });
-    setEventListeners(formElement);
-  });
-};
-
-enableValidation();
-
-function closePopupEsc(evt) {
-  if (evt.key === "Escape") {
-    closePopup();
-  }
-}
-
-document.addEventListener("keydown", closePopupEsc);
-
-document.onclick = function (event) {
-  if (event.target == editPopupElement) {
-    editPopupElement.classList.remove("popup__opened");
-  }
-  if (event.target == addCardPopupElement) {
-    addCardPopupElement.classList.remove("popup__opened");
-  }
-  if (event.target == imagePopupElement) {
-    imagePopupElement.classList.remove("popup__opened");
-  }
-};

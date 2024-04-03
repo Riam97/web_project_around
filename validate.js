@@ -1,10 +1,21 @@
-formInput.classList.add("popup__input_error");
-formError.textContent = errorMessage;
-formError.classList.add("popup__input-error_active");
+const forms = document.querySelectorAll('form[name="form"]');
+const formInput = Array.from(document.querySelectorAll(".popup__input"));
 
-formInput.classList.remove("popup__input_error");
-formError.classList.remove("popup__input-error_active");
-formError.textContent = "";
+const showInputError = (formElement, formInput, errorMessage) => {
+  const formError = formElement.querySelector(`#${formInput.id}-error`);
+
+  formInput.classList.add("popup__input-error");
+  formError.textContent = errorMessage;
+  formError.classList.add("popup__input-error_active");
+};
+
+const hideInputError = (formElement, formInput) => {
+  const formError = formElement.querySelector(`#${formInput.id}-error`);
+
+  formInput.classList.remove("popup__input-error");
+  formError.classList.remove("popup__input-error_active");
+  formError.textContent = "";
+};
 
 const isValid = (formElement, formInput) => {
   if (!formInput.validity.valid) {
@@ -12,6 +23,12 @@ const isValid = (formElement, formInput) => {
   } else {
     hideInputError(formElement, formInput);
   }
+};
+
+const hasInvalidInput = (inputList) => {
+  return Array.from(inputList).some((formInput) => {
+    return !formInput.validity.valid;
+  });
 };
 
 const toggleButtonState = (inputList, buttonElement) => {
@@ -36,12 +53,7 @@ const setEventListeners = (formElement) => {
       toggleButtonState(inputList, buttonElement);
     });
   });
-};
-
-const hasInvalidInput = (inputList) => {
-  return Array.from(inputList).some((formInput) => {
-    return !formInput.validity.valid;
-  });
+  toggleButtonState(inputList, buttonElement);
 };
 
 const enableValidation = () => {
@@ -53,6 +65,10 @@ const enableValidation = () => {
       }
     });
     setEventListeners(formElement);
+    toggleButtonState(
+      formElement.querySelectorAll(".popup__input"),
+      formElement.querySelector(".popup__button")
+    );
   });
 };
 
