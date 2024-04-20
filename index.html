@@ -29,7 +29,7 @@
             <div class="profile__info">
               <div class="profile__info-button">
                 <p class="profile__name">Jacques Cousteau</p>
-                <button class="profile__edit-button">
+                <button class="profile__edit-button popup__open-button">
                   <img
                     src="./images/vectorEditButton.png"
                     alt="botón para editar perfil"
@@ -39,14 +39,18 @@
               <p class="profile__ocupation">Explorer</p>
             </div>
           </div>
-          <button class="profile__button-add-card">
+          <button class="profile__button-add-card popup__open-button">
             <img
               src="./images/addButton.png"
               alt="botón para agregar tarjeta"
             />
           </button>
           <div class="popup" id="popup__profile">
-            <form class="popup__form" name="form" novalidate>
+            <form
+              class="popup__form popup__form-edit-profile"
+              name="form"
+              novalidate
+            >
               <button class="popup__close-button" type="button">
                 <img
                   src="./images/closeIcon.png"
@@ -83,7 +87,11 @@
             </form>
           </div>
           <div class="popup" id="popup__add-card">
-            <form class="popup__form" name="form" novalidate>
+            <form
+              class="popup__form popup__form-add-card"
+              name="form"
+              novalidate
+            >
               <button class="popup__close-button" type="button">
                 <img
                   src="./images/closeIcon.png"
@@ -151,8 +159,16 @@
         <p class="footer__text">© 2020 Around The U.S.</p>
       </footer>
     </div>
+    <script type="module" src="./index.js"></script>
+    <script type="nomodule" src="./index.js"></script>
 
-    <script src="./index.js"></script>
-    <script src="./validate.js"></script>
+    <script type="module" src="./FormValidator.js"></script>
+    <script type="nomodule" src="./FormValidator.js"></script>
+
+    <script type="module" src="./Card.js"></script>
+    <script type="nomodule" src="./Card.js"></script>
+
+    <script type="module" src="./utils.js"></script>
+    <script type="nomodule" src="./utils.js"></script>
   </body>
 </html>
