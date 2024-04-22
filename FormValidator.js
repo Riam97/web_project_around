@@ -1,6 +1,6 @@
-import { addCardFormElement } from "./index.js";
+//import { addCardFormElement } from "./index.js";
 
-class FormValidator {
+export class FormValidator {
   constructor(formElement) {
     this._formElement = formElement;
     this._inputList = Array.from(
@@ -68,12 +68,3 @@ class FormValidator {
     this.setEventListener();
   }
 }
-
-const profileFormValidation = document.querySelectorAll('form[name="form"]');
-profileFormValidation.forEach((formElement) => {
-  const validation = new FormValidator(formElement);
-  validation.enableValidation();
-});
-
-const addCardValidation = new FormValidator(addCardFormElement);
-addCardValidation.enableValidation();

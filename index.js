@@ -1,3 +1,6 @@
+import { FormValidator } from "./FormValidator.js";
+import { InitialCards, NewCard } from "./Card.js";
+
 const profileElement = document.querySelector(".profile");
 export const profileNameElement =
   profileElement.querySelector(".profile__name");
@@ -101,3 +104,38 @@ document.onclick = function (event) {
     imagePopupElement.classList.remove("popup__opened");
   }
 };
+
+const profileFormValidation = document.querySelectorAll('form[name="form"]');
+profileFormValidation.forEach((formElement) => {
+  const validation = new FormValidator(formElement);
+  validation.enableValidation();
+});
+
+const addCardValidation = new FormValidator(addCardFormElement);
+addCardValidation.enableValidation();
+
+// de aqui pa bajo el cambio
+const renderElements = () => {
+  document.querySelector(".cards").innerHTML = "";
+  initialCards.forEach((item) => {
+    const card = new InitialCards(item, ".cards__template");
+    const cardElement = card.generateCard();
+    document.querySelector(".cards").appendChild(cardElement);
+  });
+};
+
+renderElements();
+
+addCardFormElement.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+
+  const newCardData = {
+    link: inputImage.value,
+    name: inputTitle.value,
+  };
+  const newCard = new NewCard(newCardData, ".cards__template");
+  const cardElement = newCard.generateCard();
+
+  document.querySelector(".cards").prepend(cardElement);
+  closePopup();
+});

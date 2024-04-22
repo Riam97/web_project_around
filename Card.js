@@ -1,11 +1,3 @@
-import {
-  addCardFormElement,
-  initialCards,
-  inputImage,
-  inputTitle,
-  closePopup,
-} from "./index.js";
-
 class Card {
   constructor(cardSelector) {
     this._cardSelector = cardSelector;
@@ -58,7 +50,7 @@ class Card {
   }
 }
 
-class InitialCards extends Card {
+export class InitialCards extends Card {
   constructor(data, cardSelector) {
     super(cardSelector);
     this._image = data.link;
@@ -78,7 +70,7 @@ class InitialCards extends Card {
   }
 }
 
-class NewCard extends Card {
+export class NewCard extends Card {
   constructor(data, cardSelector) {
     super(cardSelector);
 
@@ -98,28 +90,3 @@ class NewCard extends Card {
     return this._element;
   }
 }
-
-const renderElements = () => {
-  document.querySelector(".cards").innerHTML = "";
-  initialCards.forEach((item) => {
-    const card = new InitialCards(item, ".cards__template");
-    const cardElement = card.generateCard();
-    document.querySelector(".cards").appendChild(cardElement);
-  });
-};
-
-renderElements();
-
-addCardFormElement.addEventListener("submit", (evt) => {
-  evt.preventDefault();
-
-  const newCardData = {
-    link: inputImage.value,
-    name: inputTitle.value,
-  };
-  const newCard = new NewCard(newCardData, ".cards__template");
-  const cardElement = newCard.generateCard();
-
-  document.querySelector(".cards").prepend(cardElement);
-  closePopup();
-});
