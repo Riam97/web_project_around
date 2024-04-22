@@ -2,8 +2,7 @@ import { FormValidator } from "./FormValidator.js";
 import { InitialCards, NewCard } from "./Card.js";
 
 const profileElement = document.querySelector(".profile");
-export const profileNameElement =
-  profileElement.querySelector(".profile__name");
+const profileNameElement = profileElement.querySelector(".profile__name");
 const profileOcupationElement = profileElement.querySelector(
   ".profile__ocupation"
 );
@@ -20,18 +19,12 @@ export const addCardButton = document.querySelector(
   ".profile__button-add-card"
 );
 const addCardPopupElement = document.querySelector("#popup__add-card");
-export const addCardFormElement = document.querySelector(
-  ".popup__form-add-card"
-);
-export const inputTitle = addCardFormElement.querySelector(
-  ".popup__input-title"
-);
-export const inputImage = addCardFormElement.querySelector(
-  ".popup__input-image"
-);
+const addCardFormElement = document.querySelector(".popup__form-add-card");
+const inputTitle = addCardFormElement.querySelector(".popup__input-title");
+const inputImage = addCardFormElement.querySelector(".popup__input-image");
 const imagePopupElement = document.querySelector("#popup__images");
 export const closeButton = document.querySelectorAll(".popup__close-button");
-export const initialCards = [
+const initialCards = [
   {
     name: "Valle de Yosemite",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/yosemite.jpg",
