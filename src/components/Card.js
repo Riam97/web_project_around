@@ -1,6 +1,7 @@
 class Card {
-  constructor(cardSelector) {
+  constructor(cardSelector, popupWithImage) {
     this._cardSelector = cardSelector;
+    this._popupWithImage = popupWithImage;
   }
 
   _getTemplate() {
@@ -25,11 +26,11 @@ class Card {
       .addEventListener("click", () => {
         this._handleDeleteButton();
       });
-    this._element
+    /*  this._element
       .querySelector(".card__image")
       .addEventListener("click", () => {
         this._handleImagePopup(this._image, this._title);
-      });
+      }); */
   }
 
   _handleLikeButton() {
@@ -42,12 +43,9 @@ class Card {
     this._element.remove();
   }
 
-  _handleImagePopup(src, title) {
-    const imagePopupElement = document.querySelector("#popup__images");
-    imagePopupElement.classList.add("popup__opened");
-    imagePopupElement.querySelector(".popup__card-image").src = src;
-    imagePopupElement.querySelector(".popup__card-title").textContent = title;
-  }
+  /*  _handleImagePopup(src, title) {
+    this._popupWithImage.open({ link, title });
+  } */
 }
 
 export class InitialCards extends Card {

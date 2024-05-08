@@ -1,4 +1,4 @@
-import * as indexCode from "./index.js";
+/* import * as indexCode from "./constants.js";
 
 indexCode.profileFormElement.addEventListener(
   "submit",
@@ -19,4 +19,4 @@ indexCode.closeButton.forEach((button) => {
   button.addEventListener("click", indexCode.closePopup);
 });
 
-document.addEventListener("keydown", indexCode.closePopupEsc);
+document.addEventListener("keydown", indexCode.closePopupEsc); */
