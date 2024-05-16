@@ -12,7 +12,6 @@ import FormValidator from "../components/FormValidator.js";
 import { InitialCards, NewCard } from "../components/Card.js";
 import {
   initialCards,
-  popupSelector,
   profileFormElement,
   addCardFormElement,
 } from "../utils/constants.js";
@@ -51,9 +50,20 @@ renderElements();
 
 const imagePopup = new PopupWithImage("#popup__images");
 
-addCardFormElement.addEventListener("submit", (evt) => {
-  evt.preventDefault();
+const profilePopup = new PopupWithForms("#popup__profile", (formData) => {
+  console.log(formData);
+  const userInfo = new UserInfo({
+    nameSelector: ".profile__name",
+    occupationSelector: ".profile__occupation",
+  });
 
+  userInfo.setUserInfo(formData);
+});
+
+const profileFormValidator = new FormValidator(profileFormElement);
+profileFormValidator.enableValidation();
+
+const addCardPopup = new PopupWithForms("#popup__add-card", (formData) => {
   const newCardData = {
     link: addCardFormElement.querySelector(".popup__input-image").value,
     name: addCardFormElement.querySelector(".popup__input-title").value,
@@ -68,21 +78,6 @@ addCardFormElement.addEventListener("submit", (evt) => {
   addCardFormValidator.enableValidation();
 });
 
-const profilePopup = new PopupWithForms("#popup__profile", (formData) => {
-  console.log(formData);
-  const userInfo = new UserInfo({
-    nameSelector: ".profile__name",
-    occupationSelector: ".profile__occupation",
-  });
-
-  userInfo.setUserInfo(formData);
-});
-
-const profileFormValidator = new FormValidator(profileFormElement);
-profileFormValidator.enableValidation();
-
-const addCardPopup = new PopupWithForms("#popup__add-card", (formData) => {});
-
 document
   .querySelector(".profile__edit-button")
   .addEventListener("click", () => {
@@ -94,3 +89,7 @@ document
   .addEventListener("click", () => {
     addCardPopup.open();
   });
+
+document.querySelector(".card__image").addEventListener("click", () => {
+  imagePopup.open();
+});

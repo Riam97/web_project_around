@@ -26,11 +26,7 @@ class Card {
       .addEventListener("click", () => {
         this._handleDeleteButton();
       });
-    /*  this._element
-      .querySelector(".card__image")
-      .addEventListener("click", () => {
-        this._handleImagePopup(this._image, this._title);
-      }); */
+    andleImagePopup(this._image, this._title);
   }
 
   _handleLikeButton() {
@@ -42,10 +38,6 @@ class Card {
   _handleDeleteButton() {
     this._element.remove();
   }
-
-  /*  _handleImagePopup(src, title) {
-    this._popupWithImage.open({ link, title });
-  } */
 }
 
 export class InitialCards extends Card {

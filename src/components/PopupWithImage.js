@@ -6,23 +6,21 @@ export default class PopupWithImage extends Popup {
 
     this._image = this._popup.querySelector(".popup__card-image");
     this._title = this._popup.querySelector(".popup__card-title");
-    // console.log(this._image);
+    console.log(this._image);
   }
 
-  open(link, name) {
-    super.open();
+  _handleImagePopup(link, title) {
     this._image.src = link;
-    this._image.alt = name;
-    this._title.textContent = name;
+    this._title.textContent = title;
   }
-  close() {
-    super.close();
+
+  open() {
+    super.open();
   }
 
   setEventListeners() {
-    super.setEventListeners();
-    this._popup.querySelector(".card__image").addEventListener("click", () => {
-      this.open(this._image.src, this._title.textContent);
+    document.querySelector(".card__image").addEventListener("click", () => {
+      this._handleImagePopup(link, title);
     });
   }
 }
