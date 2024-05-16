@@ -26,7 +26,6 @@ class Card {
       .addEventListener("click", () => {
         this._handleDeleteButton();
       });
-    andleImagePopup(this._image, this._title);
   }
 
   _handleLikeButton() {
