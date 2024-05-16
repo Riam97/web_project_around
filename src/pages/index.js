@@ -26,6 +26,11 @@ const addButton = document.getElementById("add-card-button");
 addButton.src = addCardButtonSrc;
 const closeButton = document.getElementById("close-button");
 closeButton.src = closeButtonSrc;
+const closeButtonAddCard = document.getElementById("close-button-addCard");
+closeButtonAddCard.src = closeButtonSrc;
+
+const imagePopup = new PopupWithImage("#popup__images");
+imagePopup.setEventListeners();
 
 const addCardFormValidator = new FormValidator(addCardFormElement);
 addCardFormValidator.enableValidation();
@@ -35,7 +40,14 @@ const renderElements = () => {
     {
       data: initialCards,
       renderer: (item) => {
-        const card = new InitialCards(item, ".cards__template");
+        const card = new InitialCards(
+          item,
+
+          ".cards__template",
+          (link, name) => {
+            imagePopup._handleImagePopup(link, name);
+          }
+        );
         const cardElement = card.generateCard();
         cardSection.addItems(cardElement);
       },
@@ -47,8 +59,6 @@ const renderElements = () => {
 };
 
 renderElements();
-
-const imagePopup = new PopupWithImage("#popup__images");
 
 const profilePopup = new PopupWithForms("#popup__profile", (formData) => {
   console.log(formData);
@@ -69,7 +79,10 @@ const addCardPopup = new PopupWithForms("#popup__add-card", (formData) => {
     name: addCardFormElement.querySelector(".popup__input-title").value,
   };
 
-  const newCard = new NewCard(newCardData, ".cards__template");
+  const newCard = new NewCard(newCardData, ".cards__template", (link, name) => {
+    imagePopup._handleImagePopup(link, name);
+  });
+
   const cardElement = newCard.generateCard();
 
   const cardSection = document.querySelector(".cards");

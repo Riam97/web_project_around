@@ -11,7 +11,9 @@ export default class PopupWithImage extends Popup {
 
   _handleImagePopup(link, title) {
     this._image.src = link;
+    this._image.alt = title;
     this._title.textContent = title;
+    super.open();
   }
 
   open() {
@@ -19,8 +21,6 @@ export default class PopupWithImage extends Popup {
   }
 
   setEventListeners() {
-    document.querySelector(".card__image").addEventListener("click", () => {
-      this._handleImagePopup(link, title);
-    });
+    super.setEventListeners();
   }
 }

@@ -1,18 +1,18 @@
+const template = document.querySelector(".cards__template");
 class Card {
-  constructor(cardSelector, popupWithImage) {
+  constructor(data, cardSelector, handleOpenImage) {
     this._cardSelector = cardSelector;
-    this._popupWithImage = popupWithImage;
+    this._handleOpenImage = handleOpenImage;
+    this._image = data.link;
+    this._title = data.name;
+    this._element = this._getTemplate();
+    this._cardImage = this._element.querySelector(".card__image");
   }
 
   _getTemplate() {
-    const cardElement = document
-      .querySelector(this._cardSelector)
-      .content.querySelector(".card")
-      .cloneNode(true);
+    const cardElement = template.content.querySelector(".card").cloneNode(true);
 
-    this._element = cardElement;
-
-    return this._element;
+    return cardElement;
   }
 
   _setEventListeners() {
@@ -26,6 +26,9 @@ class Card {
       .addEventListener("click", () => {
         this._handleDeleteButton();
       });
+    this._cardImage.addEventListener("click", () => {
+      this._handleOpenImage(this._image, this._title);
+    });
   }
 
   _handleLikeButton() {
@@ -40,8 +43,8 @@ class Card {
 }
 
 export class InitialCards extends Card {
-  constructor(data, cardSelector) {
-    super(cardSelector);
+  constructor(data, cardSelector, handleOpenImage) {
+    super(data, cardSelector, handleOpenImage);
     this._image = data.link;
     this._imageAlt = data.name;
     this._title = data.name;
@@ -60,8 +63,8 @@ export class InitialCards extends Card {
 }
 
 export class NewCard extends Card {
-  constructor(data, cardSelector) {
-    super(cardSelector);
+  constructor(data, cardSelector, handleOpenImage) {
+    super(data, cardSelector, handleOpenImage);
 
     this._image = data.link;
     this._title = data.name;
