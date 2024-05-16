@@ -41,7 +41,7 @@
   overflow: hidden;
 }
 
-.profile__ocupation {
+.profile__occupation {
   font-size: 18px;
   font-weight: 400;
   line-height: 21.78px;
@@ -91,7 +91,7 @@
     line-height: 30px;
   }
 
-  .profile__ocupation {
+  .profile__occupation {
     font-size: 21px;
     font-weight: 400;
     line-height: 20px;
@@ -134,7 +134,7 @@
     line-height: 26px;
   }
 
-  .profile__ocupation {
+  .profile__occupation {
     font-size: 14px;
     font-weight: 400;
     line-height: 17px;

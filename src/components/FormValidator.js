@@ -1,6 +1,4 @@
-//import { addCardFormElement } from "./index.js";
-
-export class FormValidator {
+export default class FormValidator {
   constructor(formElement) {
     this._formElement = formElement;
     this._inputList = Array.from(
