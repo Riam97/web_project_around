@@ -11,12 +11,22 @@
   <body>
     <div class="page">
       <header class="header">
-        <img class="header__logo" id="logo" alt="Logo Around the U.S." />
+        <img
+          class="header__logo"
+          id="logo"
+          alt="Logo Around the U.S."
+          src="<%=require('../images/logoAround.png')%>"
+        />
       </header>
       <main>
         <section class="profile">
           <div class="profile__picture-info">
-            <img class="profile__picture" id="avatar" alt="Foto de perfil" />
+            <img
+              class="profile__picture"
+              id="avatar"
+              alt="Foto de perfil"
+              src="<%=require('../images/Avatar.png')%>"
+            />
             <div class="profile__info">
               <div class="profile__info-button">
                 <p class="profile__name">Jacques Cousteau</p>
@@ -24,6 +34,7 @@
                   <img
                     id="edit-profile-button"
                     alt="botón para editar perfil"
+                    src="<%=require('../images/vectorEditButton.png')%>"
                   />
                 </button>
               </div>
@@ -31,7 +42,11 @@
             </div>
           </div>
           <button class="profile__button-add-card">
-            <img id="add-card-button" alt="botón para agregar tarjeta" />
+            <img
+              id="add-card-button"
+              alt="botón para agregar tarjeta"
+              src="<%=require('../images/addButton.png')%>"
+            />
           </button>
           <div class="popup" id="popup__profile">
             <form
@@ -40,7 +55,11 @@
               novalidate
             >
               <button class="popup__close-button" type="button">
-                <img id="close-button" alt="botón para cerrar ventana" />
+                <img
+                  id="close-button"
+                  alt="botón para cerrar ventana"
+                  src="<%=require('../images/closeIcon.png')%>"
+                />
               </button>
               <h2 class="popup__form-title">Edit profile</h2>
               <input
@@ -84,6 +103,7 @@
                   id="close-button-addCard"
                   alt="botón
                 para cerrar ventana"
+                  src="<%=require('../images/closeIcon.png')%>"
                 />
               </button>
               <h2 class="popup__form-title">Nuevo lugar</h2>
@@ -129,7 +149,11 @@
         <div class="popup" id="popup__images">
           <div class="popup__container">
             <button class="popup__close-button" type="button">
-              <img id="close-button-images" alt="botón para cerrar ventana" />
+              <img
+                id="close-button-images"
+                alt="botón para cerrar ventana"
+                src="<%=require('../images/closeIcon.png')%>"
+              />
             </button>
             <img
               src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
