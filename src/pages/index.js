@@ -1,33 +1,15 @@
 import "./index.css";
-import logoSrc from "../images/logoAround.png";
-import avatarSrc from "../images/Avatar.png";
-import editprofileSrc from "../images/vectorEditButton.png";
-import addCardButtonSrc from "../images/addButton.png";
-import closeButtonSrc from "../images/closeIcon.png";
 import PopupWithForms from "../components/PopupWithForms.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import UserInfo from "../components/UserInfo.js";
 import Section from "../components/Section.js";
 import FormValidator from "../components/FormValidator.js";
-import { InitialCards, NewCard } from "../components/Card.js";
+import Card from "../components/Card.js";
 import {
   initialCards,
   profileFormElement,
   addCardFormElement,
 } from "../utils/constants.js";
-
-const logo = document.getElementById("logo");
-logo.src = logoSrc;
-const avatar = document.getElementById("avatar");
-avatar.src = avatarSrc;
-const editButton = document.getElementById("edit-profile-button");
-editButton.src = editprofileSrc;
-const addButton = document.getElementById("add-card-button");
-addButton.src = addCardButtonSrc;
-const closeButton = document.getElementById("close-button");
-closeButton.src = closeButtonSrc;
-const closeButtonAddCard = document.getElementById("close-button-addCard");
-closeButtonAddCard.src = closeButtonSrc;
 
 const imagePopup = new PopupWithImage("#popup__images");
 imagePopup.setEventListeners();
@@ -40,7 +22,7 @@ const renderElements = () => {
     {
       data: initialCards,
       renderer: (item) => {
-        const card = new InitialCards(
+        const card = new Card(
           item,
 
           ".cards__template",
@@ -79,7 +61,7 @@ const addCardPopup = new PopupWithForms("#popup__add-card", (formData) => {
     name: addCardFormElement.querySelector(".popup__input-title").value,
   };
 
-  const newCard = new NewCard(newCardData, ".cards__template", (link, name) => {
+  const newCard = new Card(newCardData, ".cards__template", (link, name) => {
     imagePopup._handleImagePopup(link, name);
   });
 
@@ -102,7 +84,3 @@ document
   .addEventListener("click", () => {
     addCardPopup.open();
   });
-
-document.querySelector(".card__image").addEventListener("click", () => {
-  imagePopup.open();
-});

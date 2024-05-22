@@ -1,5 +1,6 @@
 const template = document.querySelector(".cards__template");
-class Card {
+
+export default class Card {
   constructor(data, cardSelector, handleOpenImage) {
     this._cardSelector = cardSelector;
     this._handleOpenImage = handleOpenImage;
@@ -40,44 +41,13 @@ class Card {
   _handleDeleteButton() {
     this._element.remove();
   }
-}
-
-export class InitialCards extends Card {
-  constructor(data, cardSelector, handleOpenImage) {
-    super(data, cardSelector, handleOpenImage);
-    this._image = data.link;
-    this._imageAlt = data.name;
-    this._title = data.name;
-  }
-
   generateCard() {
-    super._getTemplate();
-    super._setEventListeners();
+    this._getTemplate();
+    this._setEventListeners();
 
     this._element.querySelector(".card__image").src = this._image;
     this._element.querySelector(".card__title").textContent = this._title;
-    this._element.querySelector(".card__title").alt = this._imageAlt;
-
-    return this._element;
-  }
-}
-
-export class NewCard extends Card {
-  constructor(data, cardSelector, handleOpenImage) {
-    super(data, cardSelector, handleOpenImage);
-
-    this._image = data.link;
-    this._title = data.name;
-  }
-
-  generateCard() {
-    this._element = super._getTemplate();
-    super._setEventListeners();
-
-    this._element.querySelector(".card__image").src = this._image;
-    this._element.querySelector(".card__title").textContent = this._title;
-
-    document.querySelector(".cards").appendChild(this._element);
+    this._element.querySelector(".card__image").alt = this._title;
 
     return this._element;
   }
