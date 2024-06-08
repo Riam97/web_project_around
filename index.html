@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Around the US" />
+    <meta name="keywords" content="US, Nature, Parks" />
+    <meta name="author" content="Maria Jose Molina" />
+    <title>Around the US</title>
+  <script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <img
+          class="header__logo"
+          id="logo"
+          alt="Logo Around the U.S."
+          src="aac3b14e4e46cc0c4da4.png"
+        />
+      </header>
+      <main>
+        <section class="profile">
+          <div class="profile__picture-info">
+            <img
+              class="profile__picture"
+              id="avatar"
+              alt="Foto de perfil"
+              src="0e8405223c86912b246d.png"
+            />
+            <div class="profile__info">
+              <div class="profile__info-button">
+                <p class="profile__name">Jacques Cousteau</p>
+                <button class="profile__edit-button">
+                  <img
+                    id="edit-profile-button"
+                    alt="botón para editar perfil"
+                    src="dfb3246e64167eda7df4.png"
+                  />
+                </button>
+              </div>
+              <p class="profile__occupation">Explorer</p>
+            </div>
+          </div>
+          <button class="profile__button-add-card">
+            <img
+              id="add-card-button"
+              alt="botón para agregar tarjeta"
+              src="e82ea1368040370b4f65.png"
+            />
+          </button>
+          <div class="popup" id="popup__profile">
+            <form
+              class="popup__form popup__form-edit-profile"
+              name="form"
+              novalidate
+            >
+              <button class="popup__close-button" type="button">
+                <img
+                  id="close-button"
+                  alt="botón para cerrar ventana"
+                  src="9717d520ba32aa94a3fc.png"
+                />
+              </button>
+              <h2 class="popup__form-title">Edit profile</h2>
+              <input
+                id="form-input-name"
+                class="popup__input popup__name"
+                type="text"
+                placeholder="Name"
+                minlength="2"
+                maxlength="40"
+                required
+                name="name"
+              />
+              <span
+                class="popup__input-error"
+                id="form-input-name-error"
+              ></span>
+              <input
+                id="form-input-about"
+                class="popup__input popup__occupation"
+                type="text"
+                placeholder="Profession"
+                minlength="2"
+                maxlength="200"
+                required
+                name="about"
+              />
+              <span class="popup__input-error" id="form-input-about-error"
+                >Please, fill out this field.</span
+              >
+              <button class="popup__button" type="submit">Save</button>
+            </form>
+          </div>
+          <div class="popup" id="popup__add-card">
+            <form
+              class="popup__form popup__form-add-card"
+              name="form"
+              novalidate
+            >
+              <button class="popup__close-button" type="button">
+                <img
+                  id="close-button-addCard"
+                  alt="botón
+                para cerrar ventana"
+                  src="9717d520ba32aa94a3fc.png"
+                />
+              </button>
+              <h2 class="popup__form-title">Nuevo lugar</h2>
+              <input
+                id="form-input-title"
+                class="popup__input popup__input-title"
+                type="text"
+                placeholder="Título"
+                minlength="2"
+                maxlength="30"
+                required
+              />
+              <span class="popup__input-error" id="form-input-title-error"
+                >Please, fill out this field.</span
+              >
+              <input
+                id="form-input-url"
+                class="popup__input popup__input-image"
+                type="url"
+                placeholder="Enlace a la imagen"
+                required
+              />
+              <span class="popup__input-error" id="form-input-url-error"
+                >Please, fill out this field.</span
+              >
+              <button class="popup__button" type="submit">Crear</button>
+            </form>
+          </div>
+        </section>
+        <section class="cards"></section>
+        <div class="cards">
+          <template class="cards__template">
+            <div class="card">
+              <img class="card__image" />
+              <button class="card__delete-button"></button>
+              <div class="card__text">
+                <h2 class="card__title"></h2>
+                <button class="card__like-button"></button>
+              </div>
+            </div>
+          </template>
+        </div>
+        <div class="popup" id="popup__images">
+          <div class="popup__container">
+            <button class="popup__close-button" type="button">
+              <img
+                id="close-button-images"
+                alt="botón para cerrar ventana"
+                src="9717d520ba32aa94a3fc.png"
+              />
+            </button>
+            <img
+              src="https://practicum-content.s3.us-west-1.amazonaws.com/new-markets/WEB_sprint_5/ES/lago.jpg"
+              class="popup__card-image"
+              alt="imagen de la tarjeta"
+            />
+            <p class="popup__card-title">escribo algo</p>
+          </div>
+        </div>
+      </main>
+      <footer class="footer">
+        <p class="footer__text">© 2020 Around The U.S.</p>
+      </footer>
+    </div>
+  </body>
+</html>
