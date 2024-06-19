@@ -84,3 +84,82 @@ document
   .addEventListener("click", () => {
     addCardPopup.open();
   });
+
+//desarrollo sprint 10 desde aquí
+class Api {
+  constructor() {
+    this.baseUrl = baseUrl;
+    this.headers = headers;
+  }
+
+  getInitialCards() {
+    return fetch(`${this.baseUrl}/cards`, {
+      headers: this.headers,
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
+  }
+}
+
+/* const api = new Api ({
+  baseUrl: "https://around.nomoreparties.co/v1/web_es_12/users/me", {
+  method: "GET",
+  headers: {
+    authorization: "50b6f104-4531-48f6-93b8-d385b9bebae9",
+    "Content-Type": "application/json"
+  }
+});
+
+ api.getInitialCards()
+   .then(cards => console.log(cards))
+   .catch(err => console.error(err)); */
+
+fetch("https://around.nomoreparties.co/v1/web_es_12/users/me", {
+  method: "GET",
+  headers: {
+    authorization: "50b6f104-4531-48f6-93b8-d385b9bebae9",
+    "Content-Type": "application/json",
+  },
+})
+  .then((res) => res.json())
+  .then((result) => {
+    console.log(result);
+  });
+
+fetch("https://around.nomoreparties.co/v1/web_es_12/cards", {
+  method: "GET",
+  headers: {
+    authorization: "50b6f104-4531-48f6-93b8-d385b9bebae9",
+  },
+})
+  .then((res) => {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  })
+  .then((cardsArray) => {
+    cardsArray.forEach((cardData) => {
+      const card = new Card(cardData, ".cards__template", handleOpenImage);
+      const cardElement = card.generateCard();
+      document.querySelector(".cards-container").appendChild(cardElement);
+    });
+  })
+  .catch((error) => {
+    console.error("Error al cargar las tarjetas", error);
+  });
+
+fetch("https://around.nomoreparties.co/v1/web_es_12/users/me", {
+  method: "PATCH",
+  headers: {
+    authorization: "c56e30dc-2883-4270-a59e-b2f7bae969c6",
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name: "Marie Skłodowska Curie",
+    about: "Físico y químicos",
+  }),
+});
