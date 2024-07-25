@@ -15,4 +15,14 @@ export default class UserInfo {
     this._nameElement.textContent = name;
     this._occupationElement.textContent = about;
   }
+
+  setEventListeners() {
+    this.element
+      .querySelector(".profile__avatar")
+      .addEventListener("click", () => {
+        this._newAvatar();
+      });
+  }
+
+  _newAvatar() {}
 }

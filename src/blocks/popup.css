@@ -38,6 +38,10 @@
   border-radius: 10px;
 }
 
+.popup__form-delete {
+  height: 200px;
+}
+
 .popup__form-title {
   color: #000;
   margin: 35px;
@@ -101,6 +105,10 @@
 
 .popup__card-title {
   color: #fff;
+}
+
+.popup__container {
+  width: 430px;
 }
 
 @media screen and (max-width: 767px) {
