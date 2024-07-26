@@ -1,7 +1,8 @@
 export default class UserInfo {
-  constructor({ nameSelector, occupationSelector }) {
+  constructor({ nameSelector, occupationSelector, userId }) {
     this._nameElement = document.querySelector(nameSelector);
     this._occupationElement = document.querySelector(occupationSelector);
+    this._userId = userId;
   }
 
   getUserInfo() {
@@ -16,7 +17,11 @@ export default class UserInfo {
     this._occupationElement.textContent = about;
   }
 
-  setEventListeners() {
+  getUserId() {
+    return this._userId;
+  }
+
+  /* setEventListeners() {
     this.element
       .querySelector(".profile__avatar")
       .addEventListener("click", () => {
@@ -24,5 +29,5 @@ export default class UserInfo {
       });
   }
 
-  _newAvatar() {}
+  _newAvatar() {} */
 }

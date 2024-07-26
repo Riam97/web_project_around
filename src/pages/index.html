@@ -20,12 +20,12 @@
       </header>
       <main>
         <section class="profile">
-          <div class="profile__picture-info">
+          <div class="profile__avatar-info">
             <img
               class="profile__avatar"
               id="avatar"
               alt="Foto de perfil"
-              src="."
+              src="<%=require('../images/Avatar.png')%>"
             />
             <div class="profile__info">
               <div class="profile__info-button">
@@ -115,6 +115,7 @@
                 minlength="2"
                 maxlength="30"
                 required
+                name="name"
               />
               <span class="popup__input-error" id="form-input-title-error"
                 >Please, fill out this field.</span
@@ -125,6 +126,7 @@
                 type="url"
                 placeholder="Enlace a la imagen"
                 required
+                name="link"
               />
               <span class="popup__input-error" id="form-input-url-error"
                 >Please, fill out this field.</span
@@ -180,27 +182,32 @@
               Si
             </button>
           </div>
+
           <div class="popup" id="popup__avatar">
-            <div class="popup__form popup__form-avatar">
+            <div class="popup__container popup__form-avatar">
               <button class="popup__close-button" type="button">
                 <img
                   id="close-button-images"
                   alt="botón para cerrar ventana"
-                  src="<%=require('../images/closeIcon.png')%>"
+                  src="."
                 />
               </button>
               <p class="popup__form-title">Cambiar foto de perfil</p>
-              <input
-                id="form-input-url-avatar"
-                class="popup__input popup__input-image"
-                type="url"
-                placeholder="Enlace a la imagen"
-                required
-              />
-              <button class="popup__button popup__delete-card" type="button">
-                Si
-              </button>
+              <form class="popup__form" name="avatar-form">
+                <input
+                  id="form-input-url-avatar"
+                  class="popup__input popup__input-image"
+                  type="url"
+                  placeholder="Enlace a la imagen"
+                  required
+                  name="avatar"
+                />
+                <button class="popup__button popup__save-button" type="submit">
+                  Guardar
+                </button>
+              </form>
             </div>
+          </div>
         </div>
       </main>
       <footer class="footer">

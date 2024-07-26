@@ -24,71 +24,89 @@ imagePopup.setEventListeners();
 const addCardFormValidator = new FormValidator(addCardFormElement);
 addCardFormValidator.enableValidation();
 
-api
-  .getInitialCards()
-  .then((cardsArray) => {
-    const renderElements = () => {
-      const cardSection = new Section(
-        {
-          data: cardsArray,
-          renderer: (item) => {
-            const card = new Card(
-              item,
-
-              ".cards__template",
-              (link, name) => {
-                imagePopup._handleImagePopup(link, name);
-              },
-              api
-            );
-            const cardElement = card.generateCard();
-            cardSection.addItems(cardElement);
-          },
-        },
-        ".cards"
-      );
-
-      cardSection.renderItems();
-    };
-
-    renderElements();
-  })
-  .catch((error) => {
-    console.error("Error al cargar las tarjetas", error);
-  });
-
-api.getUserInfo().then();
+const userInfo = new UserInfo({
+  nameSelector: ".profile__name",
+  occupationSelector: ".profile__occupation",
+});
 
 const profilePopup = new PopupWithForms("#popup__profile", (formData) => {
   console.log(formData);
-  const userInfo = new UserInfo({
-    nameSelector: ".profile__name",
-    occupationSelector: ".profile__occupation",
+  api.editProfile(formData.name, formData.about).then((user) => {
+    userInfo.setUserInfo({
+      name: user.name,
+      about: user.about,
+    });
+  });
+});
+
+api.getUserInfo().then((user) => {
+  console.log(user);
+  userInfo.setUserInfo({
+    name: user.name,
+    about: user.about,
   });
 
-  userInfo.setUserInfo(formData);
+  function createCard(item) {
+    const card = new Card(
+      item,
+
+      ".cards__template",
+      (link, name) => {
+        imagePopup._handleImagePopup(link, name);
+      },
+      api,
+      user._id
+    );
+    const cardElement = card.generateCard();
+    return cardElement;
+  }
+
+  api
+    .getInitialCards()
+    .then((cardsArray) => {
+      const renderElements = () => {
+        const cardSection = new Section(
+          {
+            data: cardsArray,
+            renderer: (item) => {
+              const card = createCard(item);
+              cardSection.addItems(card);
+            },
+          },
+          ".cards"
+        );
+
+        cardSection.renderItems();
+        const addCardPopup = new PopupWithForms(
+          "#popup__add-card",
+          (formData) => {
+            console.log(formData);
+            api.addCard(formData.name, formData.link).then((item) => {
+              const newCard = createCard(item);
+
+              cardSection.addCard(newCard);
+            });
+          }
+        );
+        addCardPopup.setEventListeners();
+        document
+          .querySelector(".profile__button-add-card")
+          .addEventListener("click", () => {
+            addCardPopup.open();
+          });
+      };
+
+      renderElements();
+    })
+    .catch((error) => {
+      console.error("Error al cargar las tarjetas", error);
+    });
 });
 
 const profileFormValidator = new FormValidator(profileFormElement);
 profileFormValidator.enableValidation();
 
-const addCardPopup = new PopupWithForms("#popup__add-card", (formData) => {
-  const newCardData = {
-    link: addCardFormElement.querySelector(".popup__input-image").value,
-    name: addCardFormElement.querySelector(".popup__input-title").value,
-  };
-
-  const newCard = new Card(newCardData, ".cards__template", (link, name) => {
-    imagePopup._handleImagePopup(link, name);
-  });
-
-  const cardElement = newCard.generateCard();
-
-  const cardSection = document.querySelector(".cards");
-  cardSection.prepend(cardElement);
-
-  addCardFormValidator.enableValidation();
-});
+addCardFormValidator.enableValidation();
 
 document
   .querySelector(".profile__edit-button")
@@ -96,14 +114,5 @@ document
     profilePopup.open();
   });
 
-document
-  .querySelector(".profile__button-add-card")
-  .addEventListener("click", () => {
-    addCardPopup.open();
-  });
-
 export const confirmation = new PopupWithConfirmation("#popup__delete");
-
-document.querySelector(".card__delete-button").addEventListener("click", () => {
-  confirmation.open();
-});
+confirmation.setEventListeners();

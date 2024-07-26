@@ -19,22 +19,20 @@ export default class Api {
     return fetch(`${this.baseUrl}/users/me`, {
       method: "GET",
       headers: this.headers,
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        }
-        return Promise.reject(`Error: ${res.status}`);
-      })
-      .then((result) => {});
+    }).then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`Error: ${res.status}`);
+    });
   }
-  editProfile() {
+  editProfile(name, about) {
     return fetch(`${this.baseUrl}/users/me`, {
       method: "PATCH",
       headers: this.headers,
       body: JSON.stringify({
-        name: "",
-        about: "",
+        name,
+        about,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -43,13 +41,13 @@ export default class Api {
       return Promise.reject(`Error: ${res.status}`);
     });
   }
-  addCard() {
+  addCard(name, link) {
     return fetch(`${this.baseUrl}/cards`, {
       method: "POST",
       headers: this.headers,
       body: JSON.stringify({
-        name: "",
-        link: "",
+        name,
+        link,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -82,18 +80,6 @@ export default class Api {
       })
       .catch((error) => console.error("Error:", error));
   }
-
-  /*  likeCard(id) {
-    return fetch(`${this.baseUrl}/cards/likes/${id}`, {
-      method: "PUT",
-      headers: this.headers,
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`Error: ${res.status}`);
-    });
-  } */
 
   updateAvatar(link) {
     return fetch(`${this.baseUrl}/users/me/avatar`, {

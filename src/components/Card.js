@@ -1,21 +1,23 @@
-//import { api } from "../pages/index.js";
 import { confirmation } from "../pages/index.js";
 const template = document.querySelector(".cards__template");
 
 export default class Card {
-  constructor(data, cardSelector, handleOpenImage, api) {
-    this._cardSelector = cardSelector;
+  constructor(data, cardSelector, handleOpenImage, api, currentUserId) {
+    // this._cardSelector = cardSelector;
     this._handleOpenImage = handleOpenImage;
     this._image = data.link;
     this._title = data.name;
     this._id = data._id;
+    this._owner = data.owner;
     this._likes = data.likes ?? [];
+    this._api = api;
+    this._currentUserId = currentUserId;
     this._element = this._getTemplate();
+
     this._cardImage = this._element.querySelector(".card__image");
     this.likesNumber = this._element.querySelector(".card__like-number");
     this._likeCount = this._likes.length;
     this.likesNumber.textContent = this._likeCount;
-    this._api = api;
 
     this._isLiked = this._likes.some((like) => like.userId === "miIdDeUsuario");
     this._updateLikeButtonState();
@@ -23,7 +25,6 @@ export default class Card {
 
   _getTemplate() {
     const cardElement = template.content.querySelector(".card").cloneNode(true);
-
     return cardElement;
   }
 
@@ -58,6 +59,7 @@ export default class Card {
         console.error("Error al actualizar el me gusta:", error)
       );
   }
+
   _updateLikeButtonState() {
     const likeButton = this._element.querySelector(".card__like-button");
     likeButton.classList.toggle("active", this._isLiked);
@@ -65,21 +67,17 @@ export default class Card {
 
   _handleDeleteButton(element) {
     confirmation.open();
-    const confirmDelete = () => {
-      const cardElement = element.target.closest(".card");
-      const deleteButton = document.querySelector(".popup__confirm-button");
-      deleteButton.textContent = "Eliminando...";
+    confirmation.setDeleteHandler(() => {
       this._api
         .deleteCard(this._id)
         .then(() => {
-          cardElement.remove();
-          deleteButton.textContent = "Si";
+          this._element.remove();
+          confirmation.close();
         })
         .catch((error) =>
-          console.error("Error al eliminar la tarjeta:", error)
+          console.error(`Error al eliminar la tarjeta: ${error}`)
         );
-    };
-    confirmation.setDeleteHandler(confirmDelete);
+    });
   }
 
   generateCard() {
@@ -89,6 +87,11 @@ export default class Card {
     this._element.querySelector(".card__image").src = this._image;
     this._element.querySelector(".card__title").textContent = this._title;
     this._element.querySelector(".card__image").alt = this._title;
+
+    if (this._owner._id !== this._currentUserId) {
+      const deleteButton = this._element.querySelector(".card__delete-button");
+      deleteButton.remove();
+    }
 
     return this._element;
   }
