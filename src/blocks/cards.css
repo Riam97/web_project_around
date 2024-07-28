@@ -2,7 +2,6 @@
   max-width: 880px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  /*grid-template-rows: repeat(2, 1fr);*/
   gap: 2rem;
   margin: 30px auto 0;
 }
@@ -42,8 +41,15 @@
   max-width: 220px;
 }
 
+.card__like {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .card__like-button {
   background-image: url(../images/vectorCardButton.png);
+
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -54,6 +60,10 @@
   background-color: #fff;
   transition: 0.3s;
   cursor: pointer;
+}
+
+.card__like-number {
+  margin: 0 auto;
 }
 
 .card__like-button:hover {

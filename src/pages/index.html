@@ -20,12 +20,18 @@
       </header>
       <main>
         <section class="profile">
-          <div class="profile__picture-info">
+          <div class="profile__avatar-info">
             <img
-              class="profile__picture"
+              class="profile__avatar"
               id="avatar"
               alt="Foto de perfil"
               src="<%=require('../images/Avatar.png')%>"
+            />
+            <img
+              class="profile__avatar-edit"
+              id="editarPerfil"
+              alt="Editar perfil"
+              src="<%=require('../images/avatarVector.png')%>"
             />
             <div class="profile__info">
               <div class="profile__info-button">
@@ -115,6 +121,7 @@
                 minlength="2"
                 maxlength="30"
                 required
+                name="name"
               />
               <span class="popup__input-error" id="form-input-title-error"
                 >Please, fill out this field.</span
@@ -125,6 +132,7 @@
                 type="url"
                 placeholder="Enlace a la imagen"
                 required
+                name="link"
               />
               <span class="popup__input-error" id="form-input-url-error"
                 >Please, fill out this field.</span
@@ -141,7 +149,10 @@
               <button class="card__delete-button"></button>
               <div class="card__text">
                 <h2 class="card__title"></h2>
-                <button class="card__like-button"></button>
+                <div class="card__like">
+                  <button class="card__like-button"></button>
+                  <span class="card__like-number"></span>
+                </div>
               </div>
             </div>
           </template>
@@ -161,6 +172,47 @@
               alt="imagen de la tarjeta"
             />
             <p class="popup__card-title">escribo algo</p>
+          </div>
+        </div>
+        <div class="popup" id="popup__delete">
+          <div class="popup__form popup__form-delete">
+            <button class="popup__close-button" type="button">
+              <img
+                id="close-button-images"
+                alt="botón para cerrar ventana"
+                src="<%=require('../images/closeIcon.png')%>"
+              />
+            </button>
+            <p class="popup__form-title">¿Estás seguro/a?</p>
+            <button class="popup__button popup__delete-card" type="button">
+              Si
+            </button>
+          </div>
+        </div>
+
+        <div class="popup" id="popup__avatar">
+          <div class="popup__container">
+            <button class="popup__close-button" type="button">
+              <img
+                id="close-button-avatar"
+                alt="botón para cerrar ventana"
+                src="<%=require('../images/closeIcon.png')%>"
+              />
+            </button>
+            <form class="popup__form popup__form-avatar" name="avatar-form">
+              <h2 class="popup__form-title">Cambiar foto de perfil</h2>
+              <input
+                id="form-input-url-avatar"
+                class="popup__input popup__input-image"
+                type="url"
+                placeholder="Enlace a la imagen"
+                required
+                name="avatar"
+              />
+              <button class="popup__button popup__save-button" type="submit">
+                Guardar
+              </button>
+            </form>
           </div>
         </div>
       </main>
