@@ -27,6 +27,7 @@ addCardFormValidator.enableValidation();
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   occupationSelector: ".profile__occupation",
+  avatarSelector: ".profile__avatar",
 });
 
 const profilePopup = new PopupWithForms("#popup__profile", (formData) => {
@@ -44,6 +45,7 @@ api.getUserInfo().then((user) => {
   userInfo.setUserInfo({
     name: user.name,
     about: user.about,
+    avatar: user.avatar,
   });
 
   function createCard(item) {
@@ -116,3 +118,18 @@ document
 
 export const confirmation = new PopupWithConfirmation("#popup__delete");
 confirmation.setEventListeners();
+
+//desde aqui avatarPopup
+document.querySelector(".profile__avatar").addEventListener("click", () => {
+  console.log("funcionando");
+  avatarPopup.open();
+});
+
+const avatarPopup = new PopupWithForms("#popup__avatar", (formData) => {
+  api.updateAvatar(formData.avatar).then((user) => {
+    userInfo.setUserInfo({
+      avatar: user.avatar,
+    });
+  });
+});
+avatarPopup.setEventListeners();

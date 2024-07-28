@@ -65,7 +65,7 @@ export default class Card {
     likeButton.classList.toggle("active", this._isLiked);
   }
 
-  _handleDeleteButton(element) {
+  _handleDeleteButton() {
     confirmation.open();
     confirmation.setDeleteHandler(() => {
       this._api

@@ -111,6 +111,10 @@
   width: 430px;
 }
 
+.popup__form-avatar {
+  height: 250px;
+}
+
 @media screen and (max-width: 767px) {
   .popup__form {
     max-width: 240px;

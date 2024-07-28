@@ -15,6 +15,24 @@
   width: 120px;
   height: 120px;
   border-radius: 70px;
+  position: relative;
+  z-index: 1;
+  transition: 0.3s;
+}
+
+.profile__avatar:hover {
+  opacity: 0.5;
+}
+
+.profile__avatar-edit {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  margin: 40px;
+}
+
+.profile__avatar-edit:hover {
+  z-index: 2;
 }
 
 .profile__info {
